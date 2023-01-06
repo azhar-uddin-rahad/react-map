@@ -1,0 +1,32 @@
+[
+    {
+      "markerOffset": -15,
+      "name": "Sau Paulo",
+     "coordinates":[-58.3816,-34.6037],
+      "data" : 40
+    },
+    {
+        "markerOffset": -15,
+      "name": "Melbourne",
+      "coordinates":[144.963058, -37.813629],
+      "data" : 80
+    },
+    {
+        "markerOffset": 25,
+        "name": "Dhaka",
+        "coordinates":[90.412521,23.810331],
+        "data" : 100
+    },
+    {
+        "markerOffset": 25,
+        "name": "San Francisco",
+        "coordinates":[-122.419418,37.774929],
+        "data" : 150
+    },
+    {
+        "markerOffset": 25,
+        "name": "India",
+        "coordinates":[72.8777,19.0760],
+        "data" : 150
+    }
+  ]

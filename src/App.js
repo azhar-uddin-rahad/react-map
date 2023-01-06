@@ -1,45 +1,19 @@
 import { hover } from "@testing-library/user-event/dist/hover";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Annotation, ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from "react-simple-maps";
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 function App() {
   const [content,setContent]=useState();
   const [info,setInfo]=useState();
+  const [country,setCountry]=useState();
   const geoUrl= "features.json"
   
-  const markers =[
-    {
-      markerOffset: -15,
-      name: 'Sau Paulo',
-      coordinates:[-58.3816,-34.6037],
-      data : 40
-    },
-    {
-      markerOffset: -15,
-      name: 'Melbourne',
-      coordinates:[144.963058, -37.813629],
-      data : 80
-    },
-    {
-      markerOffset: 25,
-      name: 'Dhaka',
-      coordinates:[90.412521,23.810331],
-      data : 100
-    },
-    {
-      markerOffset: 25,
-      name: 'San Francisco',
-      coordinates:[-122.419418,37.774929],
-      data : 150
-    },
-    {
-      markerOffset: 25,
-      name: 'India',
-      coordinates:[72.8777,19.0760],
-      data : 150
-    },
-  ]
+ useEffect(()=>{
+  fetch('targetCountryInfo.json')
+  .then(res => res.json())
+  .then(data => setCountry(data))
+ },[])
    
   const handleClick=(name,data)=>{
     console.log(name,data)
@@ -88,7 +62,7 @@ function App() {
         }
       </Geographies>
       {
-      markers.map(({name,coordinates,markerOffset,data})=>(
+      country?.map(({name,coordinates,markerOffset,data})=>(
         <Marker key={name} coordinates={coordinates}>
           <circle r={data/10} onClick={()=>handleClick(name,data)} fill='red' stroke="#fff" strokeWidth={2}/>
         <text 
